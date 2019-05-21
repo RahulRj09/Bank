@@ -1,2 +1,9 @@
 .idea
-.xml
+.gradle
+out
+gradle
+*.iml
+build.gradle
+gradlew
+gradlew.bat
+settings.gradle
