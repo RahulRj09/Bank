@@ -1,6 +1,14 @@
+.idea/
+*.iml
 out/
-# Ignore Gradle project-specific cache directory
+gen/
+idea-gitignore.jar
+resources/templates.list
+resources/gitignore/*
+build/
+build.properties
+junit*.properties
+IgnoreLexer.java~
 .gradle
 
-# Ignore Gradle build output directory
-build
+/verification
