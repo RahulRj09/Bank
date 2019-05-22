@@ -18,17 +18,20 @@ public class AccountTest {
         komal.credit(100, new Date(2019, 5, 22));
         assertEquals(100.0,komal.getBalance(),1);
     }
+
     @Test public void shouldDebit() {
         Account rahul = new Account("rahul", "123", 100, TODAY);
         rahul.debit(100, new Date(2019, 5, 22));
         assertEquals(0.0,rahul.getBalance(),1);
     }
+
     @Test public void itShouldNotChangeBalanceAfterCreditAndDebitWithSameAmount(){
         Account rahul = new Account("rahul", "123", 100, TODAY);
         rahul.credit(500, new Date(2019, 5, 22));
         rahul.debit(500, new Date(2019, 5, 22));
         assertEquals(100.0,rahul.getBalance(),1);
     }
+
     @Test public void shouldCreditOneAccountNotEffectAnotherAccount(){
         Account komal = new Account("komal", "123", 0, TODAY);
         Account rahul = new Account("rahul", "123", 100, TODAY);
@@ -37,11 +40,13 @@ public class AccountTest {
         assertEquals(300.0,rahul.getBalance(),1);
         assertEquals(100.0,komal.getBalance(),1);
     }
+
     @Test public void shouldNotChangeBalanceIfDebitMoreThenBalance(){
         Account rahul =  new Account("rahul", "123", 100, TODAY);
         rahul.debit(200, new Date(2019, 5, 22));
         assertEquals(100,rahul.getBalance(),1);
     }
+
     @Test public void shouldGetNetAmountAfterCalculatingSimpleInterest(){
         Account rahul =  new Account("rahul", "123", 100, TODAY);
         assertEquals(100.0,rahul.getBalance(0),0);
@@ -49,21 +54,19 @@ public class AccountTest {
         assertEquals(120.0,rahul.getBalance(2),0);
         assertEquals(130.0,rahul.getBalance(3),0);
     }
+
     @Test public void ifNoTransactionDoneItShouldGiveEmptyList(){
         Account rahul =  new Account("rahul", "123", 100, TODAY);
         List<Transaction> expected= new ArrayList<>();
         assertEquals(expected, rahul.getPassBook());
-
     }
+
     @Test public void ifOneTransactionDoneItShouldGiveOneTransactionList(){
         List<Transaction> expectedTransactions= new ArrayList<>();
         Account rahul =  new Account("rahul", "1234", 500, TODAY);
         Transaction credit = new Transaction("1234",TODAY,500);
         rahul.credit(500,TODAY);
         expectedTransactions.add(credit);
-        assertEquals(expectedTransactions.get(0).accountNumber, rahul.getPassBook().get(0).accountNumber);
-        assertEquals(expectedTransactions.get(0).amount, rahul.getPassBook().get(0).amount,1);
-        assertEquals(expectedTransactions.get(0).date, rahul.getPassBook().get(0).date);
-
+        assertEquals(expectedTransactions.get(0), rahul.getPassBook().get(0));
     }
 }
