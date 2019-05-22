@@ -1,7 +1,13 @@
 package banktest;
 import bank.Account;
+import bank.Transaction;
 import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 public class AccountTest {
@@ -42,5 +48,22 @@ public class AccountTest {
         assertEquals(110.0,rahul.getBalance(1),0);
         assertEquals(120.0,rahul.getBalance(2),0);
         assertEquals(130.0,rahul.getBalance(3),0);
+    }
+    @Test public void ifNoTransactionDoneItShouldGiveEmptyList(){
+        Account rahul =  new Account("rahul", "123", 100, TODAY);
+        List<Transaction> expected= new ArrayList<>();
+        assertEquals(expected, rahul.getPassBook());
+
+    }
+    @Test public void ifOneTransactionDoneItShouldGiveOneTransactionList(){
+        List<Transaction> expectedTransactions= new ArrayList<>();
+        Account rahul =  new Account("rahul", "1234", 500, TODAY);
+        Transaction credit = new Transaction("1234",TODAY,500);
+        rahul.credit(500,TODAY);
+        expectedTransactions.add(credit);
+        assertEquals(expectedTransactions.get(0).accountNumber, rahul.getPassBook().get(0).accountNumber);
+        assertEquals(expectedTransactions.get(0).amount, rahul.getPassBook().get(0).amount,1);
+        assertEquals(expectedTransactions.get(0).date, rahul.getPassBook().get(0).date);
+
     }
 }

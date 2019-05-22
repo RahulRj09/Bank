@@ -1,4 +1,5 @@
 package bank;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -8,6 +9,7 @@ public class Account {
     private double balance;
     private Date openingDate;
     public final int RATE_OF_INTEREST_PER_ANNUM = 10;
+    private final List<Transaction> transaction = new ArrayList<>();
 
     public Account(String holderName, String number, double balance, Date openingDate){
         this.holderName = holderName;
@@ -17,6 +19,8 @@ public class Account {
     }
 
     public void credit(double amount, Date creditDate){
+        Transaction credit = new Transaction("1234",creditDate,500);
+        transaction.add(credit);
         this.balance += amount;
     }
 
@@ -33,9 +37,11 @@ public class Account {
     public double getBalance(int year){
         return balance + (RATE_OF_INTEREST_PER_ANNUM * year * balance) / 100;
     }
+
     public List<Transaction> getPassBook(){
-        return null;
+        return transaction;
     }
+
     @Override
     public String toString(){
         return holderName + " , " + number + " , " + balance;
