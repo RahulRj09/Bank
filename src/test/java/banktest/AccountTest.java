@@ -34,4 +34,11 @@ public class AccountTest {
         rahul.debit(200);
         assertEquals(100,rahul.getBalance(),1);
     }
+    @Test public void shouldGetNetAmountAfterCalculatingSimpleInterest(){
+        Account rahul =  new Account("rahul", "123", 100, new Date(2019, 5, 22));
+        assertEquals(100.0,rahul.getBalance(0),0);
+        assertEquals(110.0,rahul.getBalance(1),0);
+        assertEquals(120.0,rahul.getBalance(2),0);
+        assertEquals(130.0,rahul.getBalance(3),0);
+    }
 }
