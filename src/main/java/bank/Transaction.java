@@ -23,4 +23,13 @@ public class Transaction{
                 Objects.equals(accountNumber, that.accountNumber) &&
                 Objects.equals(date, that.date);
     }
+
+    @Override
+    public String toString() {
+        return "Transaction{" +
+                "accountNumber='" + accountNumber + '\'' +
+                ", date=" + date +
+                ", amount=" + amount +
+                '}';
+    }
 }

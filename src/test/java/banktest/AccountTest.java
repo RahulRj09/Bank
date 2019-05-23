@@ -3,7 +3,6 @@ import bank.Account;
 import bank.Transaction;
 import org.junit.Test;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -84,6 +83,7 @@ public class AccountTest {
         rahul.debit(500, TODAY);
         assertEquals(expectedNoTransactions, rahul.getPassBook());
     }
+
     @Test public void ifMultipleTransactionDoneItShouldGiveMultipleTransactionInTheList(){
         List<Transaction> expectedTransactions= new ArrayList<>();
         Account rahul =  new Account("rahul", "1234", 0, TODAY);
@@ -95,5 +95,7 @@ public class AccountTest {
         expectedTransactions.add(debit);
         assertEquals(expectedTransactions, rahul.getPassBook());
     }
+
+
 
 }
