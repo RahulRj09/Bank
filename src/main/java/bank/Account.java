@@ -19,13 +19,15 @@ public class Account {
     }
 
     public void credit(double amount, Date creditDate){
-        Transaction credit = new Transaction("1234",creditDate,500);
+        Transaction credit = new Transaction(this.number,creditDate,amount);
         transaction.add(credit);
         this.balance += amount;
     }
 
     public void debit(double amount, Date debitDate){
         if (balance >= amount){
+            Transaction debit = new Transaction(this.number,debitDate,amount);
+            transaction.add(debit);
             this.balance -= amount;
         }
     }

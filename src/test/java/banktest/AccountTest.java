@@ -2,7 +2,6 @@ package banktest;
 import bank.Account;
 import bank.Transaction;
 import org.junit.Test;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -63,10 +62,18 @@ public class AccountTest {
 
     @Test public void ifOneTransactionDoneItShouldGiveOneTransactionList(){
         List<Transaction> expectedTransactions= new ArrayList<>();
-        Account rahul =  new Account("rahul", "1234", 500, TODAY);
+        Account rahul =  new Account("rahul", "1234", 0, TODAY);
         Transaction credit = new Transaction("1234",TODAY,500);
         rahul.credit(500,TODAY);
         expectedTransactions.add(credit);
-        assertEquals(expectedTransactions.get(0), rahul.getPassBook().get(0));
+        assertEquals(expectedTransactions, rahul.getPassBook());
+    }
+    @Test public void ifOneTransactionDoneItShouldGiveTheDebitAmount(){
+        List<Transaction> expectedTransactions= new ArrayList<>();
+        Account rahul =  new Account("rahul", "1234", 500, TODAY);
+        Transaction credit = new Transaction("1234",TODAY,500);
+        rahul.debit(500,TODAY);
+        expectedTransactions.add(credit);
+        assertEquals(expectedTransactions, rahul.getPassBook());
     }
 }
