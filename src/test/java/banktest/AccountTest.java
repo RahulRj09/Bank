@@ -76,4 +76,10 @@ public class AccountTest {
         expectedTransactions.add(credit);
         assertEquals(expectedTransactions, rahul.getPassBook());
     }
+    @Test public void ifTheDebitAmountMoreThenCreditAmountItShouldGiveNoTransactionInTheList() {
+        List<Transaction> expectedNoTransactions = new ArrayList<>();
+        Account rahul = new Account("rahul", "1234", 0, TODAY);
+        rahul.debit(500, TODAY);
+        assertEquals(expectedNoTransactions, rahul.getPassBook());
+    }
 }
