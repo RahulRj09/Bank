@@ -96,6 +96,9 @@ public class AccountTest {
         assertEquals(expectedTransactions, rahul.getPassBook());
     }
 
-
-
+    @Test public void ifShouldGiveNumberOfAccountsWithCreateMultipleAccounts(){
+        Account rahul =  new Account("rahul", "1234", 0, TODAY);
+        Account komal =  new Account("rahul", "1234", 0, TODAY);
+        assertEquals(2, Account.getNumberOfAccounts());
+    }
 }

@@ -10,12 +10,14 @@ public class Account {
     private Date openingDate;
     public final int RATE_OF_INTEREST_PER_ANNUM = 10;
     private final List<Transaction> transaction = new ArrayList<>();
+    private static int numberOfAccounts = 0;
 
     public Account(String holderName, String number, double balance, Date openingDate){
         this.holderName = holderName;
         this.number = number;
         this.balance = balance;
         this.openingDate = openingDate;
+        this.numberOfAccounts++;
     }
 
     public void credit(double amount, Date creditDate){
@@ -42,6 +44,10 @@ public class Account {
 
     public List<Transaction> getPassBook(){
         return transaction;
+    }
+
+    public static int getNumberOfAccounts() {
+        return numberOfAccounts;
     }
 
     @Override
