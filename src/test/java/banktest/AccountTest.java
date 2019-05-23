@@ -71,9 +71,9 @@ public class AccountTest {
     @Test public void ifOneTransactionDoneItShouldGiveTheDebitAmount(){
         List<Transaction> expectedTransactions= new ArrayList<>();
         Account rahul =  new Account("rahul", "1234", 500, TODAY);
-        Transaction credit = new Transaction("1234",TODAY,500);
-        rahul.debit(500,TODAY);
-        expectedTransactions.add(credit);
+        Transaction debit = new Transaction("1234",TODAY,500);
+        rahul.debit(-500,TODAY);
+        expectedTransactions.add(debit);
         assertEquals(expectedTransactions, rahul.getPassBook());
     }
 
@@ -90,7 +90,7 @@ public class AccountTest {
         Transaction credit = new Transaction("1234",TODAY,100);
         Transaction debit = new Transaction("1234",TODAY,50);
         rahul.credit(100,TODAY);
-        rahul.debit(50,TODAY);
+        rahul.debit(-50,TODAY);
         expectedTransactions.add(credit);
         expectedTransactions.add(debit);
         assertEquals(expectedTransactions, rahul.getPassBook());
