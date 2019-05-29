@@ -3,7 +3,7 @@ package bank;
 import java.util.Date;
 import java.util.Objects;
 
-public class Transaction{
+public class Transaction {
     public String accountNumber;
     public Date date;
     public double amount;
