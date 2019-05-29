@@ -27,12 +27,13 @@ public class Account {
         return this;
     }
 
-    public void debit(double amount, Date debitDate) {
+    public Account debit(double amount, Date debitDate) {
         if (balance >= amount) {
             Transaction debit = new Transaction(this.number, debitDate, -amount);
             transaction.add(debit);
             this.balance -= amount;
         }
+        return this;
     }
 
     public double getBalance() {

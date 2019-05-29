@@ -109,16 +109,18 @@ public class AccountTest {
         expectedTransactions.add(debit);
         assertEquals(expectedTransactions, rahul.getPassBook());
     }
+
     @Test
-    public void shouldBeAbleToMultipleCreditsInOneAccount(){
+    public void shouldBeAbleToMultipleCreditsOnOneAccount() {
         Account rahul = new Account("rahul", "1234", 0);
-        rahul.credit(100,TODAY).credit(50,TODAY);
-        assertEquals(150, rahul.getBalance(),0);
+        rahul.credit(100, TODAY).credit(50, TODAY);
+        assertEquals(150, rahul.getBalance(), 0);
     }
+
     @Test
-    public void demo(){
+    public void shouldBeAbleToMultipleCreditAndDebitTogetherInOneAccount() {
         Account rahul = new Account("rahul", "1234", 0);
-        rahul.credit(100,TODAY).debit(50,TODAY);
-        assertEquals(50, rahul.getBalance(),0);
+        rahul.credit(100, TODAY).debit(50, TODAY).debit(10, TODAY);
+        assertEquals(40, rahul.getBalance(), 0);
     }
 }
